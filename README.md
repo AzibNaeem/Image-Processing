@@ -1,3 +1,5 @@
+Image Processing Tool in C++
+
 This is a command-line based image processing tool built using C++. It allows users to load, manipulate, and save grayscale images in PGM (P2) format. The tool supports a wide variety of operations such as brightness adjustment, filtering, rotation, flipping, resizing, cropping, and more.
 
 Features
