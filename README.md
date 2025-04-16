@@ -1,92 +1,135 @@
-Image Processing Tool in C++
+# 🖼️ Grayscale Image Processor
 
-This is a command-line based image processing tool built using C++. It allows users to load, manipulate, and save grayscale images in PGM (P2) format. The tool supports a wide variety of operations such as brightness adjustment, filtering, rotation, flipping, resizing, cropping, and more.
+A C++ application for processing grayscale images in the PGM (Portable GrayMap) P2 format. This tool provides a variety of image manipulation functionalities such as brightness adjustment, filtering, rotation, cropping, and more — all through a simple text-based interface.
 
-Features
-	•	Image I/O
-	•	Load and save images in PGM (P2) format
-	•	Combine two images (side-by-side or top-to-bottom)
-	•	Enhancement & Filtering
-	•	Brightness adjustment
-	•	Contrast stretching
-	•	Binarization (thresholding)
-	•	Sharpening
-	•	Mean & Median filtering
-	•	Custom filter loading from file
-	•	Predefined filters:
-	•	Linear
-	•	Roberts
-	•	Laplacian
-	•	Geometric Transformations
-	•	Resize (scale)
-	•	Rotate (clockwise & anti-clockwise)
-	•	Flip (horizontal & vertical)
-	•	Translate
-	•	Crop
+---
 
-Getting Started
+## 📌 Features
 
-Prerequisites
-	•	C++ Compiler (supporting C++11 or higher)
-	•	Any OS (Tested on Windows)
-	•	Image viewer (e.g. IrfanView) to view .pgm files
+- 🔆 Brightness adjustment  
+- 🧪 Contrast stretching  
+- ✴️ Sharpening filter  
+- 🎚️ Thresholding (binary)  
+- ↕️ Resizing (scale up/down)  
+- 🔄 Rotation (any angle)  
+- ↔️ Horizontal and vertical flipping  
+- ✂️ Cropping selected regions  
+- ➕ Image combination (horizontal or vertical)  
+- 🎛️ Mean and median filtering  
+- ⚙️ Custom linear filters (loaded from file)  
+- 💾 Load and save images  
 
-Input Format
+---
 
-Only PGM (Portable Gray Map) files in P2 (ASCII) format are supported.
-You’ll be prompted with a menu loaded from MainMenu.txt. Each option corresponds to a specific image processing function.
+## 🗂️ Input Format
 
-Menu Options
-	1.	Load Image
-	2.	Save Image
-	3.	Change Brightness
-	4.	Contrast Stretching
-	5.	Sharpen Image
-	6.	Binarize Image
-	7.	Resize Image
-	8.	Rotate Image
-	9.	Horizontal Flip
-	10.	Vertical Flip
-	11.	Crop Image
-	12.	Combine with Another Image
-	13.	Apply Mean/Median Filter
-	14.	Apply Linear Filter from File
-	15.	Apply Custom Filter (enter manually)
-	16.	Apply Roberts Filter
-	17.	Apply Laplacian Filter
-	18.	Translate Image
-	19.	Resize (Uniform Scale)
-	20.	Exit
+This application supports **PGM P2** format only (ASCII-encoded grayscale images).  
+A valid `.pgm` file should follow this structure:
 
-File Structure
-	•	image_processing.cpp – Main source file
-	•	MainMenu.txt – Menu items configuration (required at runtime)
-	•	filters/ – Optional directory to store custom filter matrices
+```
+P2
+# Optional comment
+<width> <height>
+<max_gray_value>
+<image pixel data (row-wise)>
+```
 
-Notes
-	•	Images are represented internally using 2D vectors.
-	•	All changes must be saved manually before exiting or they will be lost.
-	•	Ensure your terminal supports input/output interaction.
-	•	Use IrfanView or similar to preview .pgm files.
+Example:
+```
+P2
+# Example image
+4 4
+255
+0 50 100 150
+200 250 255 128
+64 32 16 8
+0 0 0 0
+```
 
-20
-Load Image
-Save Image
+---
+
+## 📄 Menu File Format
+
+The application reads menu options from a plain text file. Format:
+
+```
+<number of options>
+<menu option 1>
+<menu option 2>
+...
+```
+
+Lines starting with `*` will be treated as comments and not displayed.
+
+Example:
+```
+4
 Change Brightness
-Contrast Stretching
-Sharpen Image
-Binarize Image
-Resize Image
 Rotate Image
-Horizontal Flip
-Vertical Flip
-Crop Image
-Combine Images
-Apply Mean/Median Filter
-Apply Linear Filter from File
-Apply Custom Filter
-Apply Roberts Filter
-Apply Laplacian Filter
-Translate Image
-Uniform Resize
-Exit
+Flip Horizontally
+Save Image
+```
+
+---
+
+## 📐 Custom Filter File Format
+
+To apply a custom linear filter, provide a text file with the following format:
+
+```
+<rows> <columns>
+<row 1 values>
+<row 2 values>
+...
+```
+
+Example (3×3 sharpening filter):
+```
+3 3
+0 -1 0
+-1 5 -1
+0 -1 0
+```
+
+---
+
+## ⚙️ Build & Run
+
+Ensure you have a C++ compiler installed (e.g., `g++`).  
+To compile and run:
+
+```bash
+g++ -o GrayscaleProcessor main.cpp
+./GrayscaleProcessor
+```
+
+---
+
+## 📎 Notes
+
+- Only **PGM P2** images are supported (not P5 or binary formats).
+- File paths must be correctly entered when prompted to avoid runtime errors.
+- Outputs will overwrite any existing file with the same name.
+
+---
+
+## 📁 Example Files
+
+Sample files (optional for use):
+
+- `example.pgm` — a sample image file  
+- `menu.txt` — a list of processing options  
+- `filter.txt` — a custom 3x3 filter  
+
+---
+
+## 🧑‍💻 Author
+
+**M. Azib Naeem**  
+C++ Developer | Image Processing Enthusiast
+
+---
+
+## 📃 License
+
+This project is open-source and available under the [MIT License](LICENSE).
